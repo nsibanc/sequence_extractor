@@ -17,12 +17,12 @@ ord <- metaMDS(Kar_cor)
 metaMDS(comm = Kar_cor)
 sco <- scores(ord)
 
-x11()
 for(izbor in args[-(1:2)]){
+	pdf(paste(izbor,"pdf",sep="."))
 	plot(ord, type="n")
 	points(ord, display = "species", cex = 0.8, pch=21, col="grey", bg="grey")
 	select <- which(Kar_cor_ENV$Dat==izbor)
 	points(sco[select,], cex = 0.8, pch=PCH[select], col=COL[select])
 	title(izbor)
+	dev.off()
 }
-locator(1)
